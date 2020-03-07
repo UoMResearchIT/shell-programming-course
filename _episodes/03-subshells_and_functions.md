@@ -1,80 +1,46 @@
 ---
-title: "Advanced Loops"
+title: "Subshells and Functions"
 teaching: 0
 exercises: 0
 questions:
-- "How do you avoid repetition of code (but not actions) in your scripts?"
-- "How can we repeat actions an indeterminate number of times, but not get stuck in infinity?"
+- "How can you organise your code into functional blocks"
+- "How can you import settings from other files into your scripts"
 objectives:
-- "Explain While loops, and how to control their use"
-- "Why is waiting good, and how is it best used?"
+- "Explain how BASH functions operate"
+- "Explain the difference between local and global variables"
+- "Explain how to import bash files into your environment"
 keypoints:
-- "While loops enable you to repeat actions as often as needed (without predetermination of the steps)"
-- "Wait is a useful command for managing sub processes."
+- "functions can be used for easily repeating blocks of code"
+- "you can store your study configuration and code separately"
 ---
 
 
-## Sequences and indexes for loops
 
-~~~
-for i in `seq 1 31`; do
-  echo $i
-done
-~~~
-{: .language-bash}
+## Subshells
 
-~~~
-varlist=( a list of strings )
-for i in `seq 0 3`; do
-  echo ${varlist[$i]}
-done
-~~~
-{: .language-bash}
+In the shell novice course you were introduced to writing and using shell scripts,
+http://swcarpentry.github.io/shell-novice/06-script/index.html
 
-~~~
-varlist=( a list of strings )
-for i in `seq 0 ${#varlist[@]}`; do
-  echo ${varlist[$i]}
-done
-~~~
-{: .language-bash}
+Invoking a shell script leads to the launch of a new child process, which processes the
+commands within that script. Because a subshell is run in a new process, these can be
+used for parallel processing (as we will look at in a future lesson). Here we will introduce
+key concepts behind the use of subshells.
 
-~~~
-varlist=( a list of strings )
-len=${#varlist[@]}
-for (( i=0; i<$len; i++ )); do
-  echo ${varlist[$i]}
-done
-~~~
-{: .language-bash}
+more reading: https://www.tldp.org/LDP/abs/html/subshells.html
 
 
+## Functions
 
-~~~
-varlist=( a list of strings )
-len=${#varlist[@]}
-for (( i=$len-1; i>=0; i-- )); do
-  echo ${varlist[$i]}
-done
-~~~
-{: .language-bash}
+Functions can be used for repeating blocks of code within a script, in a similar manner to
+calling a bash script from the command line.
 
 
+## Sourcing Bash Scripts
 
+We saw earlier how variables defined in a subshell cannot be used by the parent shell.
 
-
-
-## While loops
-
-~~~
-halt=no
-while ( [ $halt != 'yes' ] ); do
-  echo "break out of the loop?"
-  read halt< /dev/tty
-done
-~~~
-{: .language-bash}
 
 
 {% include links.md %}
+
 

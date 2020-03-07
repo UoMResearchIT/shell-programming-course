@@ -16,7 +16,7 @@ keypoints:
 
 Many workflows are not linear, and all workflows will have exceptional cases in which
 operations should be halted (if, for example, a file is missing, or a calculation would
-fail). Bash has the *if* control structure, which can be used to control your workflow
+fail). Bash has the `if` control structure, which can be used to control your workflow
 in these situations.
 
 In it's most basic form, this control structure will test for a condition, then execute
@@ -55,31 +55,24 @@ or false (1) if the condition is not met.
 
 
 | conditional expressions |
-| file or non-numeric | numeric | description |
+| object or non-numeric | numeric or boolean | description |
 |----------|--------|--------|
 | -e | | file exists |
 | -d | | file is a directory |
 | -f | | file is a regular file |
-| >  |  -gt | greater than
-| <  |  -lt | less than
-| >= |  -ge | greater than or equal to
-| <= |  -le | less than or equal to
-| == |  -eq | equal
-| != |  -ne | not equal
+| -z | | variable exists |
+| >  |  -gt | greater than |
+| <  |  -lt | less than |
+| >= |  -ge | greater than or equal to |
+| <= |  -le | less than or equal to |
+| == |  -eq | equal |
+| != |  -ne | not equal |
+|| ! | logical NOT |
+|| && | logical AND |
+|| \|\| | logical OR |
 
 
 
-
-
-### Jon's Pipeline: A Typical Problem
-
-Jon is a new meteorologist, tasked with working on meteogram data sampled from meteorological
-simulations for the whole of the UK. He has a few examples of these data samples from
-which to learn about the data format, and design a processing pipeline for extracting statistical
-information from this data. He will then apply this pipeline to processing a larger
-archive of meteogram data (once he has collected it).
-
-Start in the directory `data\meteogram_data`
 
 
 
@@ -98,6 +91,8 @@ Start in the directory `data\meteogram_data`
 ~~~
 j=`expr $i + 1`
 j=$(( $i + 1 ))
+let j=i+1
+j=`echo "$i + 1" | bc`
 ~~~
 {: .language-bash}
 
