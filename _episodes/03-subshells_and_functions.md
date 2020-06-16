@@ -1,7 +1,7 @@
 ---
 title: "Subshells and Functions"
-teaching: 0
-exercises: 0
+teaching: 30
+exercises: 20
 questions:
 - "How can you organise your code into functional blocks"
 - "How can you import settings from other files into your scripts"
@@ -143,9 +143,9 @@ x=4; echo $x; x=$(y=5;echo $x$y); echo $x
 
 > ## Command Substitution using backquotes
 >
-> Command substitution can also be carried out using backquotes ` `` `. This is not
+> Command substitution can also be carried out using backquotes \` \`. This is not
 > directly analogous to `$()`, as some special characters will need escaping within the
-> backquotes, but they behave in very similar manners. ` `` ` is the older implementation,
+> backquotes, but they behave in very similar manners. \` \` is the older implementation,
 > and so will be common in script libraries, but is now deprecated, and the `$()` is
 > recommended for new scripts.
 >

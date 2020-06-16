@@ -1,7 +1,7 @@
 ---
 title: "Variables and Arrays"
-teaching: 0
-exercises: 0
+teaching: 20
+exercises: 10
 questions:
 - "How can I store information without writing it to file"
 objectives:

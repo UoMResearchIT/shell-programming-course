@@ -122,17 +122,6 @@ day number 05
 
 
 
-> ## date maths test
->
-> enter a problem for date math here
->
-> > ## Solution
-> >
-> > enter the solutions, and explanations here
-> >
-> {: .solution}
-{: .challenge}
-
 
 ## If Control Structure
 
