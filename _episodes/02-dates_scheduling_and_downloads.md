@@ -32,9 +32,14 @@ will give a short introduction on how to use this command on linux systems.
 
 > ## Linux vs OSX
 >
-> The syntax for the `date` program on linux and OSX systems is different. Below we will
-> focus on the linux syntax. Where the OSX syntax is different this will be highlighted
-> in a note.
+> Although all UNIX systems will have a `date` program, the exact syntax for using it can > vary from system to system, due to differing implementations of the Unix standards.
+> The two systems you are most likely to encounter are linux-based systems
+> (such as debian, and SE-linux), and the freeBSD Unix-based OS-X system. These use quite
+> different syntaxes, so care must be taken to use the correct syntax for the system you
+> are on.
+>
+> Below we will focus on the linux syntax, as this is most common for HPC environments.
+> Where the OSX syntax is different this will be highlighted in a separate note.
 >
 {: .callout}
 
