@@ -17,7 +17,7 @@ keypoints:
 ## Variables
 
 In the shell novice course you were, indirectly, introduced to bash variables, when working
-with loops: http://swcarpentry.github.io/shell-novice/05-loop/index.html
+with loops: [http://swcarpentry.github.io/shell-novice/05-loop/index.html](http://swcarpentry.github.io/shell-novice/05-loop/index.html)
 
 ~~~
 for thing in list of things

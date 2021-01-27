@@ -188,22 +188,32 @@ environment, rather than being the same as the numerical operators.
 >
 > > ## Solution
 > >
-> > enter the solutions, and explanations here
-> >
+> > 1. True.
+> > 2. False.
+> > 3. True (but a string, not arithmetic comparison).
+> > 4. False, because it is a string comparison.
+> > 5. True, because this is a math context.
+> > 6. Error, because `-eq` can't be used within a math context
 > {: .solution}
 {: .challenge}
 
 
 > ## Arithmetic Comparisons of Strings
 >
-> If you try to make an arithmetic comparison of strings then the `[[ ]]` command converts
-> any non-numeric strings to variable names.
+> Be aware that if you try to make an arithmetic comparison of strings,
+> the `[[ ]]` command converts any non-numeric strings to variable names.
 > ~~~
+> a=2
+> b=6
 > if [[ "b" -gt "a" ]];then
 >  echo "this is slightly less obvious"
 > fi
 > ~~~
 > {: .language-bash}
+> ~~~
+>
+> ~~~
+>
 {: .callout}
 
 
@@ -216,7 +226,7 @@ environment, rather than being the same as the numerical operators.
 > non-bash, shells. Previous to this there was `[ ]` (synonymous for the `test` command),
 > which is more portable than `[[ ]]`, but is not as powerful or robust. `[ ]` wont be
 > covered here - more information on the differences between these can be found here:
-> http://mywiki.wooledge.org/BashFAQ/031
+> [http://mywiki.wooledge.org/BashFAQ/031](http://mywiki.wooledge.org/BashFAQ/031)
 {: .callout}
 
 

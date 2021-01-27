@@ -19,18 +19,22 @@ keypoints:
 ## Shell and Environment Variables
 
 In the shell novice course you were introduced to writing and using shell scripts,
-http://swcarpentry.github.io/shell-novice/06-script/index.html.
+[http://swcarpentry.github.io/shell-novice/06-script/index.html](http://swcarpentry.github.io/shell-novice/06-script/index.html).
 
-Bash is the environment contains the shell process that you are working on now. Variables
-are split between 'shell' and 'environment' variables - the 'environment' variables are
-readable by all processes in that environment, while the 'shell' variables are unique
+When a shell process is created, a corresponding environment is created to contain the
+shell process. The environment contains information needed for the shell to interact with
+the operating system (such as the location of your home directory, or which display is being
+used). Any further processes created by commands run in the shell process will inhabit
+this environment, and have access to this information too. This information is stored in
+variables, similar to the variables introduced in the previous lesson, but these are
+'environment' or 'global' variables, whereas the variables used previously were 'shell' or
+'local' variables. The difference between these is that 'environment' variables are
+readable by all processes in that environment, while 'shell' variables are unique
 to that process which created them.
 
 Invoking a shell script leads to the launch of a new process, which processes the commands
 within that script. That process will not have access to the 'shell' variables of the
 shell from which it was launched.
-
-Insert figure here, showing bash environment, and shells & subshells
 
 To demonstrate this we can create a simple bash script, called 'test.sh' and
 containing this code:
@@ -73,7 +77,7 @@ python -c "import os ; print(os.environ['var2'])"
 
 Subshells are separate instances of the command process, run as a new process, and defined
 within your scripts using `()`. Because a subshell is run in a new process, these can be
-used for parallel processing (as we will look at in a future lesson). Here we will
+used for parallel processing (although we will not cover that here). Here we will
 introduce key concepts behind the use of subshells.
 
 Unlike calling a shell script, subshells inherit the same variables as the original process,
@@ -196,7 +200,8 @@ diff <(echo 3) <(echo 5)
 
 
 
-more reading: https://www.tldp.org/LDP/abs/html/subshells.html
+More information on, and examples of using, subshells are available here:
+[https://www.tldp.org/LDP/abs/html/subshells.html](https://www.tldp.org/LDP/abs/html/subshells.html)
 
 
 

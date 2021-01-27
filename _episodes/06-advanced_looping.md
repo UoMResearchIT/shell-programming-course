@@ -59,7 +59,7 @@ the last value.
 >
 {: .callout}
 
-To use `seq` within a for loop we must execute the command within it's own subshell, e.g:
+To use `seq` within a `for` loop we must execute the command within it's own subshell, e.g:
 ~~~
 for i in $(seq 1 31); do
   echo $i
@@ -90,7 +90,7 @@ done
 {: .callout}
 
 
-For loops can be constructed using C-style notation too. These use a set of three
+`For` loops can be constructed using C-style notation too. These use a set of three
 expressions (start conditional; end conditional; increment conditional) within a math
 context, e.g:
 ~~~

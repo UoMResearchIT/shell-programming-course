@@ -22,6 +22,7 @@ date
 ~~~
 Wed 27 Jan 2021 11:52:17 GMT
 ~~~
+{: .output}
 This will return a formatted string (likely) containing information on the day, date,
 time, and timezone, as shown above.
 
@@ -54,6 +55,7 @@ date +%Y
 ~~~
 2021
 ~~~
+{: .output}
 ~~~
 date +%Y-%m
 ~~~
@@ -61,6 +63,7 @@ date +%Y-%m
 ~~~
 2021-01
 ~~~
+{: .output}
 ~~~
 date +"%Y %d"
 ~~~
@@ -68,6 +71,7 @@ date +"%Y %d"
 ~~~
 2021 27
 ~~~
+{: .output}
 In the last example we enclose the format string in quotation marks, to all inclusion of a
 space in the formatted output.
 
@@ -79,6 +83,7 @@ date -d "20120423"
 ~~~
 Mon 23 Apr 00:00:00 BST 2012
 ~~~
+{: .output}
 
 > ## Displaying dates that are not 'now' on OSX
 >
@@ -100,6 +105,7 @@ date -d "20210127 +3 day +1 month -18 year"
 ~~~
 Sun  2 Mar 00:00:00 GMT 2003
 ~~~
+{: .output}
 The advantage of using `date` to do this calculation for you is that it can deal with
 transitioning across month and year boundaries easily - to do this by hand would require a
 lot of checks for the lengths of months, leap years, etc.
