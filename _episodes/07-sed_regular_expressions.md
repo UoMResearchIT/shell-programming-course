@@ -14,11 +14,17 @@ keypoints:
 - "We can use sed to build individual files from templates."
 ---
 
-Workflows often require the editing of configuration files or scripts, or the searching of these for specific information to copy. This lesson will introduce a tool for editing files, as well as regular expressions, which can be used to make your searches more powerful.
+Workflows often require the editing of configuration files or scripts, or the searching of
+these for specific information to copy. This lesson will introduce a tool for editing
+files, as well as regular expressions, which can be used to make your searches more
+powerful.
 
-[Sed](https://www.gnu.org/software/sed/manual/sed.html) is a stream editor. It can be used to perform basic text transformations on an input stream, which can be a file, or it can be passed from a pipeline, allowing it to be combined with other tools.
+[Sed](https://www.gnu.org/software/sed/manual/sed.html) is a stream editor. It can be used
+to perform basic text transformations on an input stream, which can be a file, or it can
+be passed from a pipeline, allowing it to be combined with other tools.
 
-To demonstrate the basic usage of sed, we will create a text file containing the string `hello`, and use sed to change this to `world`:
+To demonstrate the basic usage of sed, we will create a text file containing the string
+`hello`, and use sed to change this to `world`:
 ~~~
 echo hello > input.txt
 sed -e 's/hello/world/' input.txt
@@ -28,12 +34,17 @@ sed -e 's/hello/world/' input.txt
 world
 ~~~
 {: .output}
-The `-e` flag indicates that the first parameter (`s/hello/world/`) is a script to be applied to the stream, while the following non-option parameters (`input.txt`) are input files. Sed will, by default, prints all the processed input, to save this for later use you will need to pipe the output into a file:
+The `-e` flag indicates that the first parameter (`s/hello/world/`) is a script to be
+applied to the stream, while the following non-option parameters (`input.txt`) are input
+files. Sed will, by default, prints all the processed input, to save this for later use
+you will need to pipe the output into a file:
 ~~~
 sed -e 's/hello/world/' input.txt > output.txt
 ~~~
 {: .language-bash}
-The script we are using here is a substitution (indicated by the `s` at the start of the script). The first string (`hello`) is what is being searched for, while the last string (`world`) is the string that will be used as a replacement.
+The script we are using here is a substitution (indicated by the `s` at the start of the
+script). The first string (`hello`) is what is being searched for, while the last string
+(`world`) is the string that will be used as a replacement.
 
 Sed can be passed multiple inputs, it will treat these as a single stream:
 ~~~
@@ -56,9 +67,13 @@ healo
 worad
 ~~~
 {: .output}
-You will note that the second (and first) script has been applied to both of the input files, but only one `l` has been replaced. This is because the search was not global, that is, as soon as one match string is found it is replaced and sed moves onto the next script.
+You will note that the second (and first) script has been applied to both of the input
+files, but only one `l` has been replaced. This is because the search was not global, that
+is, as soon as one match string is found it is replaced and sed moves onto the next s
+cript.
 
-If you want to replace *all* matching strings, then you need to specify that the script should be applied globally, by appending a `g` at the end of that script. E.g.:
+If you want to replace *all* matching strings, then you need to specify that the script
+should be applied globally, by appending a `g` at the end of that script. E.g.:
 ~~~
 sed -e 's/goodbye/world/' -e 's/l/a/g' input.txt input_pt2.txt
 ~~~
@@ -70,7 +85,8 @@ worad
 {: .output}
 
 
-Rather than search the whole input for match you can, if you know the exact line you wish to process, specify a line number:
+Rather than search the whole input for match you can, if you know the exact line you wish
+to process, specify a line number:
 ~~~
 echo 'hello' > input_lines.txt
 echo 'hello' >> input_lines.txt
@@ -128,7 +144,12 @@ Note that sed starts indexes from 1, not 0.
 
 ## Regular Expressions
 
-In the [Finding Things](http://swcarpentry.github.io/shell-novice/07-find/index.html) lesson in the shell novice course you were introduced to using wildcards, such as `.`, in your `grep` searches. Grep uses regular expressions (often abbreviated to _regex_), sequences of characters which define the string(s) to be searched for. Sed uses the same regex patterns for it's searches, and we will cover some basic principles of using these here.
+In the [Finding Things](http://swcarpentry.github.io/shell-novice/07-find/index.html)
+lesson in the shell novice course you were introduced to using wildcards, such as `.`, in
+your `grep` searches. Grep uses regular expressions (often abbreviated to _regex_),
+sequences of characters which define the string(s) to be searched for. Sed uses the same
+regex patterns for it's searches, and we will cover some basic principles of using these
+here.
 
 > ## Regex syntax and interoperability
 >
@@ -149,7 +170,11 @@ In the [Finding Things](http://swcarpentry.github.io/shell-novice/07-find/index.
 > where it is not necessary, to get you in the habit of using it in your own code.
 {: .callout}
 
-Regular expressions rely on the use of literal characters and metacharacters to construct the search term. Metacharacters are characters which have a special meaning (such as `.` represents any single character). If you wish to search for a literal character which happens to be a regex metacharacter, then it will need to be "escaped", that is preceded by a `\` character. For example:
+Regular expressions rely on the use of literal characters and metacharacters to construct
+the search term. Metacharacters are characters which have a special meaning (such as `.`
+represents any single character). If you wish to search for a literal character which
+happens to be a regex metacharacter, then it will need to be "escaped", that is preceded
+by a `\` character. For example:
 ~~~
 echo "Hello. World" > input.txt
 sed -E -e 's/\./.../' input.txt
@@ -159,7 +184,8 @@ sed -E -e 's/\./.../' input.txt
 Hello... World
 ~~~
 {: .output}
-Note that the string which is being used as a replacement is not a regex pattern, so the periods in this did not need escaping.
+Note that the string which is being used as a replacement is not a regex pattern, so the
+periods in this did not need escaping.
 
 > ## Forgetting to escape a metacharacter
 >
@@ -181,7 +207,8 @@ Note that the string which is being used as a replacement is not a regex pattern
 
 ### Matching ranges of characters
 
-One of the most common patterns used in regex is the definition of a list or range of characters, which can be denoted using square brackets. E.g.:
+One of the most common patterns used in regex is the definition of a list or range of
+characters, which can be denoted using square brackets. E.g.:
 ~~~
 sed -E -e 's/[HW]/J/g' input.txt
 ~~~
@@ -190,7 +217,11 @@ sed -E -e 's/[HW]/J/g' input.txt
 Jello. Jorld
 ~~~
 {: .output}
-This list of upper case characters to replace is very focused, but if you did not know in advance what the upper case characters would be you can use the list `[A-Z]`. Similarly, to replace all lower case letters use the list `[a-z]`, and to replace any digit us `[0-9]`. These can be combined as you require, for example, to match all characters (of any case) between B and H you would use `[B-Hb-h]`.
+This list of upper case characters to replace is very focused, but if you did not know in
+advance what the upper case characters would be you can use the list `[A-Z]`. Similarly,
+to replace all lower case letters use the list `[a-z]`, and to replace any digit us
+`[0-9]`. These can be combined as you require, for example, to match all characters (of
+any case) between B and H you would use `[B-Hb-h]`.
 
 > ## Creating new strings
 >
@@ -207,13 +238,15 @@ This list of upper case characters to replace is very focused, but if you did no
 
 ### Matching Repeated Instances
 
-It can be useful to match more, or less, than a single instance of a particular element in the search string. This can be done by adding one of these special characters:
+It can be useful to match more, or less, than a single instance of a particular element in
+the search string. This can be done by adding one of these special characters:
 - `*` matches the preceding element zero or more times
 - `+` matches the preceding element one or more times
 - `?` matches when the preceding element appears zero or one time
 - `{VALUE}` matches the preceding element appears the number of times defined by `VALUE`; ranges can be defined by `{VALUE,VALUE}`
 
-The elements that these can be used on can be either single characters, or sets of characters. E.g.:
+The elements that these can be used on can be either single characters, or sets of
+characters. E.g.:
 ~~~
 sed -E -e 's/l{2}o/n/g' input.txt
 ~~~
@@ -232,12 +265,18 @@ sed -E -e "s/[0-9]{4}/${YEAR}/g" <(echo 'the date is: 23-04-2020')
 the date is: 23-04-2021
 ~~~
 {: .output}
-Here we change the date to that set in a previously set variable (note the use of double quotation marks, so that the shell will interpret the string and replace the variable name with the required value).
+Here we change the date to that set in a previously set variable (note the use of double
+quotation marks, so that the shell will interpret the string and replace the variable name
+with the required value).
 
 
 ### Matching Line Endings
 
-The `^` and `$` metacharacters can be used to respectively assert the position of the start or end of a line. This allows you to "anchor" your search at either end of a line. For example, if we are provided with a YEAR variable which only contains the last two digits, but we know that the year digits will always be at the end of the line, we can search for `[0-9]{2}` without risking changing the day or month:
+The `^` and `$` metacharacters can be used to respectively assert the position of the
+start or end of a line. This allows you to "anchor" your search at either end of a line.
+For example, if we are provided with a YEAR variable which only contains the last two
+digits, but we know that the year digits will always be at the end of the line, we can
+search for `[0-9]{2}` without risking changing the day or month:
 ~~~
 YEAR=21
 sed -E -e "s/[0-9]{2}$/${YEAR}/g" <(echo 'the date is: 23-04-2020')
@@ -249,7 +288,29 @@ the date is: 23-04-2021
 {: .output}
 
 
+## BASH logic and regex
 
+In the logic and maths lesson you were introduced to the `[[ ]]` command, which is used
+for logical control structures. This command also allows regex patterns to be used,
+checking to see if a given string matches the regex or not. This comparison is performed
+using the `=~` operator. For example:
+~~~
+YEAR=1999
+if [[ $YEAR =~ ^[0-9]{2}$ ]]; then
+  echo "year is in 2 digit format"
+elif [[ $YEAR =~ ^[0-9]{4}$ ]]; then
+  echo "year is in 4 digit format"
+else
+  echo "year is in unrecognised format"
+fi
+~~~
+{: .language-bash}
+~~~
+year is in 4 digit format
+~~~
+{: .output}
+Note that the `^` and `$` metacharacters have been used to ensure the pattern matches the
+whole string, and that no partial matches are made by mistake.
 
 
 
