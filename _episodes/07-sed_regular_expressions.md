@@ -118,18 +118,20 @@ Note that sed starts indexes from 1, not 0.
 {: .callout}
 
 
-> ## Editing dates for an operational script
+> ## Editing dates for a complex configuration file
 >
-> Jon has a download script he wants to run each day to pull data from the ManUniCast
-> website `[insert script name here]`. Each day the date will need to be changed, so can
-> you automate this using `sed`? The template script itself does not need to be runnable,
-> so can be modified if it would help you.
+> Jon has a configuration file that he uses for running the Weather Research and Forecast
+> (WRF)  model. `[insert script name here]`. He wants to run this daily, keeping all of
+> the configuration the same except for the start and end dates. These will need to be
+> changed each day that the model is run, so that the start date is today, and the end
+> date is today + 3 days. Can you automate this using `sed`? The template configuration
+> file itself does not need to be useable, so can be modified if that would help you.
 >
 > > ## Solution
 > >
 > > There are two ways to do this. The first is to specify the lines you want to change,
 > > and change only those lines. However this is a fragile solution, as any changes to the
-> > template file could change the line numbering, breaking your script.
+> > template configuration file could change the line numbering, breaking your script.
 > >
 > > A more robust solution is to replace the dates in the template file with clear
 > > identifier strings. These should be something you would not normally see in a script

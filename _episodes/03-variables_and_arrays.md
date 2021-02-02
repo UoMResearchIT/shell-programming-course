@@ -146,7 +146,8 @@ must use curly braces to delimit the variable name.
 
 
 
-Arrays can be referenced using a for loop, as before:
+Finally, we note that arrays can be referenced using a `for` loop, as at the start of this
+lesson:
 ~~~
 for thing in ${listthings[@]}
 do
@@ -154,8 +155,8 @@ do
 done
 ~~~
 {: .language-bash}
-
-
+This is generally the best way to create a `for` loop; except for the most trivial examples
+it is wise to keep the array assignment separate from the loop itself.
 
 
 

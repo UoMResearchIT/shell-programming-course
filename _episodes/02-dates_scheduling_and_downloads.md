@@ -1,7 +1,7 @@
 ---
 title: "Dates, Scheduling, and Downloading Files"
-teaching: 0
-exercises: 0
+teaching: 20
+exercises: 10
 questions:
 - "How can we deal with date maths on the command line"
 - "How can we schedule regular compute jobs"
@@ -33,7 +33,8 @@ will give a short introduction on how to use this command on linux systems.
 
 > ## Linux vs OSX
 >
-> Although all UNIX systems will have a `date` program, the exact syntax for using it can > vary from system to system, due to differing implementations of the Unix standards.
+> Although all UNIX systems will have a `date` program, the exact syntax for using it can
+> vary from system to system, due to differing implementations of the Unix standards.
 > The two systems you are most likely to encounter are linux-based systems
 > (such as debian, and SE-linux), and the freeBSD Unix-based OS-X system. These use quite
 > different syntaxes, so care must be taken to use the correct syntax for the system you

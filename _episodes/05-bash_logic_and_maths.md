@@ -15,7 +15,7 @@ keypoints:
 ## Integer Maths
 
 Bash variables are, in the general context, treated as strings. Integer maths can be
-carried out using 'arithmetic expansion', using a math context to tell the interpreter
+carried out using 'arithmetic expansion', using a maths context to tell the interpreter
 when to do this. The recommended method for this is using `$(( ))`:
 ~~~
 i=3

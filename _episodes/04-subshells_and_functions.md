@@ -130,7 +130,9 @@ operations: command or process substitution.
 
 ## Command Substitution
 
-Command substitution is a feature which enables the recording of the output from an executed
+Even though the syntax for a subshell is very similar to that for declaring an array, we
+cannot directly save the subshell in the same manner, instead we have to use
+command substitution. This is a feature which enables the recording of the output from an executed
 command. The command is executed within a subshell, and the substitution is carried out
 using the following notation:
 ~~~
@@ -150,22 +152,27 @@ x=4; echo $x; x=$(y=5;echo $x$y); echo $x
 > Command substitution can also be carried out using backquotes \` \`. This is not
 > directly analogous to `$()`, as some special characters will need escaping within the
 > backquotes, but they behave in very similar manners. \` \` is the older implementation,
-> and so will be common in script libraries, but is now deprecated, and the `$()` is
-> recommended for new scripts.
->
->
+> and so will be common in script libraries, but is now deprecated, and the `$()` notation
+> is recommended for all new scripts.
 {: .callout}
 
 
 > ## Example usage of command substitution
 >
-> Command substitution has been used in the scripts that Jon inherited for his work.
-> Can you identify which these are?
+> Jon wants to save the year, month, and day, from the `date` function, as variables, so
+> that he can use them later for running download scripts. Can you write some code using
+> command substitution to do this?
 >
 > > ## Solution
 > >
-> > Command substitution is used to save the output from the `date` command.
-> >
+> > You will need three separate calls to the `date` function for this, one each for the
+> > day, month, and year. E.g.:
+> > ~~~
+> > YEAR=$(date +%Y)
+> > MONTH=$(date +%m)
+> > DAY=$(date +%d)
+> > ~~~
+> > {: .language-bash}
 > {: .solution}
 {: .challenge}
 
@@ -175,9 +182,11 @@ x=4; echo $x; x=$(y=5;echo $x$y); echo $x
 Process substitution, using `<()`, is a feature which enables the usage of the output
 of an executed command within another command, similar to the piping of output using `|`.
 
-As a (rather artificial) example, this enables us to compare the contents of two variables:
+As a (rather artificial) example, this enables us to compare the contents of two variables.
+Passing these variables directly, or via a command substitution leads to the shell searching
+for a file named after the variable value, e.g.:
 ~~~
-diff $(echo 3) $(echo 5)
+diff $(echo 3) 5
 ~~~
 {: .language-bash}
 ~~~
@@ -185,6 +194,8 @@ diff: 3: No such file or directory
 diff: 5: No such file or directory
 ~~~
 {: .output}
+
+Using process substitution ensures that the shell avoids this error:
 ~~~
 diff <(echo 3) <(echo 5)
 ~~~
@@ -194,6 +205,18 @@ diff <(echo 3) <(echo 5)
 < 3
 ---
 > 5
+~~~
+{: .output}
+
+And these subshell methods can be nested as required:
+~~~
+cat <(echo year is $(date +%Y)) <(echo month is $(date +%m)) <(echo day is $(date +%d))
+~~~
+{: .language-bash}
+~~~
+year is 2021
+month is 02
+day is 02
 ~~~
 {: .output}
 
@@ -228,8 +251,8 @@ function functionname () {
 ~~~
 {: .language-bash}
 
-Functions must be declared before they are used, and as a simple code block within the
-shell process, can read, modify, and create all variables within the shell.
+Functions must be declared before they are used, and as they are a simple code block within
+the shell process, can read, modify, and create all variables within the shell.
 ~~~
 var1='E'
 examplechange () { var1='D'; }
@@ -249,7 +272,8 @@ Bash functions are more basic than those of other programming languages, and do 
 lend themselves to modern functional programming practices. There are some tricks which
 can help though.
 
-Arguments can be passed to functions, in a similar manner as for scripts and programs:
+Arguments can be passed to functions, in a similar manner as for scripts and programs, as
+you learnt in the introduction to bash lessons:
 ~~~
 readingargs () { echo $#; echo $1; echo $2; }
 readingargs "arg1" "arg2"
@@ -277,6 +301,8 @@ startend
 start
 ~~~
 {: .output}
+Note that using the `local` declaration ensures that you don't overwrite any external
+variables which share the same name.
 
 To return information from a function in manner in which it can be allocated to an
 arbitrary variable, it is best to use `echo` to output it, and then capture the result of
