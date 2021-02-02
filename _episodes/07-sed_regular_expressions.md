@@ -289,6 +289,26 @@ the date is: 23-04-2021
 ~~~
 {: .output}
 
+### Back References and Subexpressions
+
+A back-reference is a regex command which refers to a previous part (or subexpression) of
+the matched regular expression. They can be used to repeat patterns within a regex search
+or, as we will do here, pass part of the matched regex forward to the replacement string.
+Back references are specified by a single escaped digit (e.g. `\1`; up to nine are allowed
+in a single regex), while the subexpression is indicated using `()` brackets.
+
+A common use of these is pulling out a single element of the search, e.g. the year from a
+date string:
+~~~
+date | sed -E -e "s/^.*([0-9]{4}).*$/\1/g"
+~~~
+{: .language-bash}
+~~~
+2021
+~~~
+{: .output}
+Note how the 4-digit year is stored in a subexpression, while the strings before and after it are included in the match using `^.*` and `.*$`.
+
 
 ## BASH logic and regex
 
