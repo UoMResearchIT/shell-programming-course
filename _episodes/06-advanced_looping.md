@@ -9,8 +9,11 @@ objectives:
 - "Explain While loops, and how to control their use"
 - "Why is waiting good, and how is it best used?"
 keypoints:
-- "While loops enable you to repeat actions as often as needed (without predetermination of the steps)"
-- "Wait is a useful command for managing sub processes."
+- "`seq [first] [increment] last` creates a sequence of (real) numbers"
+- "`for` loops can be controlled using `seq` or C-style notation"
+- "`${#array[@]}` is useful for setting these sequences"
+- "`while` loops use conditional statements, and aren't fixed in length like `for` loops"
+- "`while` loops cna be used for process control"
 ---
 
 

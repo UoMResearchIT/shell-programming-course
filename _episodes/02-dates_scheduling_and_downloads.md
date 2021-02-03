@@ -9,7 +9,10 @@ questions:
 objectives:
 - "Understanding some of the tools available for addressing regular needs."
 keypoints:
-- "There are tools for automating most tasks from the command line."
+- "Using `date` for your date and time calculations will save you a lot of hassle"
+- "`crontab` can be used for scheduling regular tasks"
+- "`wget` can be used for scripting your data download process"
+- "Tool syntax is not always consistent across different unix flavours"
 ---
 
 ## Date maths

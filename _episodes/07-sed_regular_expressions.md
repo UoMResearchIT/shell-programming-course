@@ -9,9 +9,18 @@ objectives:
 - "Detail regular expressions, and how they are used"
 - "Learn how to use regular expressions for string replacement"
 keypoints:
-- "We do not need to know the exact content of the text we are searching for."
-- "Searching for shapes of text is powerful."
-- "We can use sed to build individual files from templates."
+- "`sed` performs basic text transformations on an input stream"
+- "The basic usage is `sed -e 's/pattern/replacement/' input.txt`"
+- "Multiple scripts can be chained, by using additional `-e 's/pattern/replacement/'` declarations"
+- "Matches will be made on the first instance of the pattern, or all matches can be found by using `s/pattern/replacement/g`"
+- "Extended regular expressions can be enabled with the `-E` flag"
+- "Specify character ranges using `[A-Z0-9]`"
+- "Repeat single characters or ranges by appending `*`, `+`, `?`, or `{RANGE}`"
+- "Match the start and end of lines using `^` and `$`, respectively"
+- "Special character can be matched if they are escaped by prepending `\\`"
+- "Capture subexpressions with `( )`, and back-reference in your pattern or replacement text these using `\\1`-`\\9`"
+- "Regex can be used in logic tests, with the `=~` operator"
+- "Regex are easier to write than to read. Document yours well!"
 ---
 
 Workflows often require the editing of configuration files or scripts, or the searching of

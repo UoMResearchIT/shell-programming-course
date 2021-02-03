@@ -1,17 +1,19 @@
 ---
 title: "Variables and Arrays"
-teaching: 20
-exercises: 10
+teaching: 10
+exercises: 5
 questions:
 - "How can I store information without writing it to file"
 objectives:
 - "Learn how to create and reference a variable"
-- "Learn how to create and reference and indexed array"
+- "Learn how to create and reference an indexed array"
 keypoints:
-- "BASH variables are a useful tool for storing data"
-- "BASH arrays are useful for indexed lists of things"
-- "`{}` denotes a code block, useful for referencing arrays and variables"
+- "BASH variables can store a single piece of information"
+- "BASH arrays can store an indexed lists of information"
+- "`{}` denotes a code block, and are essential for referencing arrays"
 - "`[@]` denotes all of an array, while `[X]` denotes the value at position `X`"
+- "`${#VAR}` returns the length of the string"
+- "`${#ARRAY[@]}` returns the number of items in the array"
 ---
 
 ## Variables

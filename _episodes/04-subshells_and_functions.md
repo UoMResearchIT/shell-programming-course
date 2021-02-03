@@ -10,8 +10,16 @@ objectives:
 - "Explain the difference between local and global variables"
 - "Explain how to import bash files into your environment"
 keypoints:
-- "functions can be used for easily repeating blocks of code"
-- "you can store your study configuration and code separately"
+- "environment variables are accessible by all programs run from that shell"
+- "`export` turns a (private) shell variable into an environment variable"
+- "`()` creates a subshell"
+- "`{}` creates a code block within the current shell"
+- "`$()` allows a subshell to be used for command substitution, for saving the output as a variable"
+- "`<()` allows a subshell to be used for process substitution, for passing the output to another program"
+- "`read var1 var2 <<<$()` can be used to save more than one output from a command substitution"
+- "`function NAME() {}` creates a function code block"
+- "code inside functions are not executed on creation, and can be used repeatedly after creation"
+- "`. script.sh` and `source script.sh` enable the importing of code and variables from other scripts"
 ---
 
 

@@ -8,8 +8,11 @@ objectives:
 - "Explain Logical operators, and demonstrate IF structures"
 - "Detail Maths operators, and cover basic sequencing"
 keypoints:
-- "Logic is powerful, and helps make your scripts robust"
-- "Sequences and Math are useful for organising your datastructures (which we will come back to later)"
+- "`(( ))` is math context, and enables the use of C's integer arithmetic operators"
+- "`$(( ))` can be used in the same way as a command substitution"
+- "bash interprets `0X` strings as base 8, prefix strings or variables with `10#` to force base 10"
+- "`if` statements can use both `(( ))` and `[[ ]]` commands for expression testing. These use
+  different syntax, so be careful to check your code!"
 ---
 
 ## Integer Maths
