@@ -91,6 +91,7 @@ instead you reference the variable directly (using `thing`).
 > {: .solution}
 {: .challenge}
 
+
 ## Arrays
 
 BASH objects do not have to only contain a single value, they can contain a list of

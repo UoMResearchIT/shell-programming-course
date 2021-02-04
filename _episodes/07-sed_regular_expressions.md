@@ -129,8 +129,9 @@ Note that sed starts indexes from 1, not 0.
 
 > ## Editing dates for a complex configuration file
 >
-> Jon has a configuration file that he uses for running the Weather Research and Forecast
-> (WRF)  model. `[insert script name here]`. He wants to run this daily, keeping all of
+> Jon has a configuration file (`namelist.input` in the `wrf_configuration` directory)
+> that he uses for running the Weather Research and Forecast
+> (WRF)  model. He wants to run this daily, keeping all of
 > the configuration the same except for the start and end dates. These will need to be
 > changed each day that the model is run, so that the start date is today, and the end
 > date is today + 3 days. Can you automate this using `sed`? The template configuration

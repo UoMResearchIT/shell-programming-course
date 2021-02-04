@@ -1,7 +1,7 @@
 ---
 title: "Dates, Scheduling, and Downloading Files"
-teaching: 20
-exercises: 10
+teaching: 10
+exercises: 5
 questions:
 - "How can we deal with date maths on the command line"
 - "How can we schedule regular compute jobs"
@@ -182,6 +182,13 @@ This notation can be a little confusing to use, but online tools such as [cronta
 {: .challenge}
 
 
+> ## OS-X and cron
+>
+> OS-X does include the cron, but it is difficult to use because of the security settings.
+>
+> If you wish to use cron on OS-X you will need to enable Full Disk Access within the
+> Security & Privacy settings menu for the program `/usr/sbin/cron`.
+{: .callout}
 
 
 
@@ -257,12 +264,29 @@ directory.
 
 > ## Scheduling jobs
 >
-> Create a simple bash script which will use wget to download a (single) file from the
-> ManUniCast archive. Then create a crontab file to submit this to cron, scheduling the
-> task for only 3-4 minutes in the future (so that you can see it work). After you've seen
-> that it works, remember to clear your cron setup, so it does not run again at the same
-> time tomorrow.
+> Go to the `data_download` directory inside the `data-adv-shell` directory. Here there
+> is a crontab file `crontab_settings.txt` and a script for downloading some data
+> `manunicast_download.sh`.
 >
+> Edit the crontab file to
+> - set a time which is 3-4 minutes in the future
+> - set the correct path to the manunicast_download.sh file
+>
+> Then submit the crontab settings using:
+> ~~~
+> crontab crontab_settings.txt
+> ~~~
+> {: .language-bash}
+>
+> If it works you will find the downloaded file on the `Desktop` in a few minutes, if
+> not, check the error message in `stderr.log` (also on the `Desktop`) to see what the
+> problem was.
+>
+> Once this has worked you can unset the crontab using:
+> ~~~
+> crontab -r
+> ~~~
+> {: .language-bash}
 {: .challenge}
 
 

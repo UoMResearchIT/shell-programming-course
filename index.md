@@ -9,6 +9,11 @@ machines to high performance computers). This course will introduce you to advan
 features of the shell, with a focus on how these can be used to manage your computational
 workflows.
 
+Many of the tools that you will be taught about today have more advanced corresponding
+tools in other languages. However, bash is commonly used for process control on unix systems,
+and these tools are widely availability on such systems, so it is useful for you to know
+how to use them.
+
 <!-- this is an html comment -->
 
 {% comment %} This is a comment in Liquid {% endcomment %}

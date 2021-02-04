@@ -182,6 +182,57 @@ x=4; echo $x; x=$(y=5;echo $x$y); echo $x
 > > ~~~
 > > {: .language-bash}
 > {: .solution}
+>
+> Now that he has the code for obtaining today's date, he needs to do the same for
+> yesterday's date. Can you copy and adapt your code above to do this?
+>
+> > ## Solution
+> >
+> > Again you will need three separate calls to the `date` function for this,
+> > one each for the day, month, and year. To these you will need to remove one day in each, E.g.:
+> > ~~~
+> > PREV_YEAR=$(date -d "-1 day" +%Y)
+> > PREV_MONTH=$(date -d "-1 day" +%m)
+> > PREV_DAY=$(date -d "-1 day" +%d)
+> > ~~~
+> > {: .language-bash}
+> {: .solution}
+{: .challenge}
+
+> ## Using variables in an operational script
+>
+> Now that Jon has code for calculating today and yesterday's dates, he needs to add
+> these to his download script. Please edit the `manunicast_download.sh` script, so that
+> the web address passed to wget is for today's data.
+>
+> > ## Solution
+> >
+> > The web address is stored in the script as a simple string, so we can insert information
+> > from the date variables directly into this.
+> >
+> > ~~~
+> > YEAR=$(date +%Y)
+> > MONTH=$(date +%m)
+> > DAY=$(date +%d)
+> >
+> > PREV_YEAR=$(date -d "-1 day" +%Y)
+> > PREV_MONTH=$(date -d "-1 day" +%m)
+> > PREV_DAY=$(date -d "-1 day" +%d)
+> >
+> > WEBROOT="http://manunicast.seaes.manchester.ac.uk/charts/manunicast/"
+> >
+> > ADDRESS="${WEBROOT}${YEAR}${MONTH}${DAY}/d02/meteograms/meteo_ABED_${PREV_YEAR}-${PREV_MONTH}-${PREV_DAY}_1800_data.txt"
+> > wget $ADDRESS
+> > ~~~
+> > {: .language-bash}
+> > To make this code more readable, we have split out the fixed base of the address as
+> > `WEBROOT`, you do not need to do this in your own code.
+> >
+> > Using `{ }` brackets around the variable name is good practice - avoiding any errors
+> > in case you accidentally make another variable name with the following text. It is also
+> > good practice to wrap the text string in `" "`, in case there are spaces in the string.
+> >
+> {: .solution}
 {: .challenge}
 
 
@@ -436,8 +487,9 @@ configuring the environment or loading functions (as is done in the `.bash_profi
 >
 > > ## Solution
 > >
-> > The final code following this solution can be found in the git repository, under
-> > the tag `sourced_date_function`.
+> > Example scripts for linux and OSX are included in the `date_math_function` directory,
+> > called `functions_date_math_linux.sh` and `functions_date_math_osx.sh`.
+> >
 > {: .solution}
 {: .challenge}
 

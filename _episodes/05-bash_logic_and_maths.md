@@ -264,7 +264,7 @@ or false (1) if the condition is not met. These operators are slightly different
 | -e | | file exists |
 | -d | | file is a directory |
 | -f | | file is a regular file |
-| -z | | variable exists |
+| -z | | variable does not exist |
 | >  |  -gt | greater than |
 | <  |  -lt | less than |
 | >= |  -ge | greater than or equal to |
