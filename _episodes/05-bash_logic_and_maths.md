@@ -19,23 +19,45 @@ keypoints:
 
 Bash variables are, in the general context, treated as strings. Integer maths can be
 carried out using 'arithmetic expansion', using a maths context to tell the interpreter
-when to do this. The recommended method for this is using `$(( ))`:
+when to do this. The recommended method for this is using `$(( ))`, and this is used in the
+same manner as a command substitution:
 ~~~
 i=3
 j=$(($i + 1))
+echo $j
 ~~~
 {: .language-bash}
+~~~
+4
+~~~
+{: .output}
 
 Alternatively a command can be used to create the math context - these follow the same
 rules as `$(( ))`, but give an exit status (which will be useful later).
 ~~~
 a=3
 ((a=$a+7))
-((a+=7))
+echo $a
 ~~~
 {: .language-bash}
+~~~
+10
+~~~
+{: .output}
+
 Within the math context the syntax and semantics of C's integer arithmetic are used,
-enabling shorthands such as `+=` or `-=` for incremental changes in a variable.
+enabling shorthands such as `+=` or `-=` for incremental changes in a variable. For example,
+this gives the same result as the addition above:
+~~~
+a=3
+((a+=7))
+echo $a
+~~~
+{: .language-bash}
+~~~
+10
+~~~
+{: .output}
 
 > ## let, expr and bc
 >
@@ -52,26 +74,20 @@ enabling shorthands such as `+=` or `-=` for incremental changes in a variable.
 >
 {: .callout}
 
-> ## maths test
->
-> enter a list of maths questions here
->
-> > ## Solution
-> >
-> > enter the solutions, and explanations here
-> >
-> {: .solution}
-{: .challenge}
-
-
+The arithmetic operators that can be used within the math context are:
 ~~~
   +  :  Addition
   -  :  Subtraction
   *  :  Multiplication
   /  :  Division
   ** :  Exponent
+  %  :  Modulus
 ~~~
 {: .source}
+Conditional expressions are also allowed, as covered below, as well as C's
+[bitwise operations](https://en.wikipedia.org/wiki/Bitwise_operations_in_C) and
+[ternary operator](https://www.cprogramming.com/reference/operators/ternary-operator.html),
+which won't be covered here.
 
 ## Integer / String Conversions
 
