@@ -1,6 +1,6 @@
 ---
 title: "BASH Logic and Maths"
-teaching: 0
+teaching: 30
 exercises: 0
 questions:
 - "How can we have responsive workflows on the BASH shell"

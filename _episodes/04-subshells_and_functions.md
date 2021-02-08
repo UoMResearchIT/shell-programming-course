@@ -1,7 +1,7 @@
 ---
 title: "Subshells and Functions"
 teaching: 30
-exercises: 20
+exercises: 10
 questions:
 - "How can you organise your code into functional blocks"
 - "How can you import settings from other files into your scripts"

@@ -1,6 +1,6 @@
 ---
 title: "Advanced Loops"
-teaching: 0
+teaching: 20
 exercises: 0
 questions:
 - "How do you avoid repetition of code (but not actions) in your scripts?"

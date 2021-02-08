@@ -1,6 +1,6 @@
 ---
 title: "Sed and regular expressions"
-teaching: 0
+teaching: 20
 exercises: 0
 questions:
 - "How can you edit text files within your scripts?"
