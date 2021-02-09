@@ -179,15 +179,6 @@ should be used if you use the same method for output or log files.
 > ~~~
 > {: .output}
 >
-> or  `cut` (by using `"` as the delimiter):
-> ~~~
-> head -1 ~/Desktop/data-shell/data/elements/N.xml | cut -d '"' -f 2
-> ~~~
-> {: .language-bash}
-> ~~~
-> Nitrogen
-> ~~~
-> {: .output}
 >
 > Please write a bash script which will use a `for` loop and one of these two methods to create
 > links that use the full element names for these files within whatever directory it is run.
@@ -213,6 +204,36 @@ should be used if you use the same method for output or log files.
 {: .challenge}
 
 
+> ## If you have a hammer, every problem is a nail
+>
+> In the above solution we use `sed` and regex to extract the string we require from the
+> xml file. There are other bash tools that could do this for us, and in ways which are
+> arguable more readable (and being as readable as possible is a good trait for code).
+> Can you identify a tool from either these lessons, or the bash introduction lessons,
+> that you could use for this, and adapt your script to use this tool?
+>
+> > ## Solution
+> >
+> > The `cut` tool can be used to split the text we need, by using `"` as the delimiter:
+> > ~~~
+> > head -1 ~/Desktop/data-shell/data/elements/N.xml | cut -d '"' -f 2
+> > ~~~
+> > {: .language-bash}
+> > ~~~
+> > Nitrogen
+> > ~~~
+> > {: .output}
+> >
+> > Using this command instead would make your code more readable. Both solutions do still
+> > make similar assumptions about what format the string will take though (and the `head`
+> > command also makes major assumptions about the formatting of the file). These assumptions
+> > can make your scripts fragile. This fragility can be addressed by either well documenting
+> > what inputs you expect the script to have, or by building in extra checks to your code.
+> > The choice of which of these solutions to use depends on the script itself - which solution
+> > do you think would be the most appropriate for this script?
+> >
+> {: .solution}
+{: .challenge}
 
 
 {% include links.md %}
