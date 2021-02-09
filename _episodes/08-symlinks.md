@@ -180,7 +180,7 @@ should be used if you use the same method for output or log files.
 > {: .output}
 >
 >
-> Please write a bash script which will use a `for` loop and one of these two methods to create
+> Please write a bash script which will use a `for` loop and this string processing pipeline to create
 > links that use the full element names for these files within whatever directory it is run.
 >
 > > ## Solution
